@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Cutie ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #0f0f0f;
+  color: white;
+  overflow: hidden;
+}
+
+/* Sections as slides */
+section {
+  height: 100vh;
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.active {
+  display: flex;
+}
+
+/* Background styles */
+.home { background: linear-gradient(135deg, #0f0f0f, #3b0a0a); }
+.dark { background: #1a1a1a; }
+.red { background: #2b0f0f; }
+.black { background: #000; }
+
+/* Text */
+h1 { font-size: 2.5rem; }
+p { max-width: 600px; line-height: 1.6; }
+
+/* Button */
+button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  background: #ff4d6d;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff1e4d;
+  transform: scale(1.05);
+}
+
+/* Hearts */
+.heart {
+  position: fixed;
+  top: 100%;
+  color: #ff4d6d;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-120vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ❤️ SLIDES -->
+<section class="home active">
+  <h1 id="typing"></h1>
+  <p>A small surprise… made just for you</p>
+  <button onclick="nextSlide()">Enter ❤️</button>
+</section>
+
+<section class="dark">
+  <h1>Thank You ❤️</h1>
+  <p>When I saw your gifts, I didn’t just see Bouquet of chocolates or a special pen stand…<br><br>
+    I saw your effort, your love, and how much you truly care about me.<br><br>
+    You made me feel something really special.</p>
+  <button onclick="nextSlide()">Next ❤️</button>
+</section>
+
+<section>
+  <h1>About You ❤️</h1>
+  <p>There’s something about you that makes everything feel better…<br><br>
+    Your smile, your kindness, your way of caring…<br><br>
+    You don’t even realize how special you are…<br><br>
+    But to me, you mean everything.</p>
+  <button onclick="nextSlide()">Next ❤️</button>
+</section>
+
+<section class="red">
+  <h1>Your Gifts 💝</h1>
+  <p>🍫 The chocolates — you made my day sweeter than ever.<br><br>
+    🌹 The rose pen stand — something beautiful that stays… just like us.<br><br>
+    💌 Your letter — the most meaningful thing, because it came from your heart.</p>
+  <button onclick="nextSlide()">Next ❤️</button>
+</section>
+
+<section>
+  <h1>What I Feel ❤️</h1>
+  <p>I may not always express it perfectly…<br><br>
+    But what I feel for you is real, deep, and growing every day.<br><br>
+    You’ve become a part of my happiness… my thoughts… my life.</p>
+  <button onclick="nextSlide()">Next ❤️</button>
+</section>
+
+<section class="dark">
+  <h1>Little Things 💕</h1>
+  <p>The way you talk…<br>
+    The way you care…<br>
+    The way you make everything feel lighter…<br><br>
+    These small things mean the most to me.</p>
+  <button onclick="nextSlide()">Next ❤️</button>
+</section>
+
+<section>
+  <h1>For the Future </h1>
+  <p>I don’t know what the future holds…<br><br>
+    But I do know one thing — I want you in it.<br><br>
+    More smiles, more memories, more moments together.</p>
+  <button onclick="nextSlide()">Next ❤️</button>
+</section>
+
+<section class="black">
+  <h1>Thanku ❤️</h1>
+  <p> This website is just a small way to say thank you…<br><br>
+    But what I feel for you is much bigger than words.<br><br>
+  </p>
+  <button onclick="nextSlide()">Next ❤️</button>
+</section>
+
+<section class="red">
+  <h1>One More Thing ❤️</h1>
+  <button onclick="showLove()">Click Me</button>
+  <p id="secret" style="display:none;">You are the best thing that ever happened to me ❤️</p>
+  
+</section>
+
+
+
+<script>
+let current = 0;
+const slides = document.querySelectorAll("section");
+
+function nextSlide() {
+  slides[current].classList.remove("active");
+  current++;
+  if (current < slides.length) {
+    slides[current].classList.add("active");
+  }
+}
+
+/* Typing */
+const text = "For My Cutie ❤️";
+let i = 0;
+function typeEffect() {
+  if (i < text.length) {
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, 80);
+  }
+}
+typeEffect();
+
+/* Hearts */
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 5000);
+}
+setInterval(createHeart, 300);
+
+/* Secret */
+function showLove() {
+  document.getElementById("secret").style.display = "block";
+}
+</script>
+
+</body>
+</html>
