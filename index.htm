@@ -14,7 +14,18 @@ body {
   overflow: hidden;
 }
 
-/* Sections as slides */
+/* Progress Bar */
+#progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 5px;
+  background: #ff4d6d;
+  width: 0%;
+  z-index: 1000;
+}
+
+/* Slides */
 section {
   height: 100vh;
   width: 100%;
@@ -25,28 +36,32 @@ section {
   text-align: center;
   padding: 30px;
   position: absolute;
-  top: 0;
-  left: 0;
 }
 
 .active {
   display: flex;
+  animation: fadeIn 0.6s ease;
 }
 
-/* Background styles */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Backgrounds */
 .home { background: linear-gradient(135deg, #0f0f0f, #3b0a0a); }
 .dark { background: #1a1a1a; }
 .red { background: #2b0f0f; }
 .black { background: #000; }
 
-/* Text */
-h1 { font-size: 2.5rem; }
-p { max-width: 600px; line-height: 1.6; }
-
-/* Button */
-button {
+/* Buttons */
+.btns {
   margin-top: 20px;
-  padding: 12px 25px;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 20px;
   border: none;
   border-radius: 25px;
   background: #ff4d6d;
@@ -56,8 +71,8 @@ button {
 }
 
 button:hover {
-  background: #ff1e4d;
   transform: scale(1.05);
+  background: #ff1e4d;
 }
 
 /* Hearts */
@@ -69,7 +84,6 @@ button:hover {
 }
 
 @keyframes float {
-  0% { transform: translateY(0); opacity: 1; }
   100% { transform: translateY(-120vh); opacity: 0; }
 }
 </style>
@@ -77,91 +91,160 @@ button:hover {
 
 <body>
 
+
+<div id="progress"></div>
+
+<!-- 🎵 MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="rani.mp3" type="audio/mpeg">
+</audio>
+
 <!-- ❤️ SLIDES -->
+
 <section class="home active">
   <h1 id="typing"></h1>
   <p>A small surprise… made just for you</p>
-  <button onclick="nextSlide()">Enter ❤️</button>
+  <div class="btns">
+    <button onclick="nextSlide()">Enter ❤️</button>
+  </div>
 </section>
 
 <section class="dark">
   <h1>Thank You ❤️</h1>
-  <p>When I saw your gifts, I didn’t just see Bouquet of chocolates or a special pen stand…<br><br>
+  <p>
+    When I saw your gifts, I didn’t just see Bouquet of chocolates or a special pen stand…<br><br>
     I saw your effort, your love, and how much you truly care about me.<br><br>
-    You made me feel something really special.</p>
-  <button onclick="nextSlide()">Next ❤️</button>
+    You made me feel something really special.
+  </p>
+  <div class="btns">
+    <button onclick="prevSlide()">⬅</button>
+    <button onclick="nextSlide()">Next ❤️</button>
+  </div>
 </section>
 
 <section>
   <h1>About You ❤️</h1>
-  <p>There’s something about you that makes everything feel better…<br><br>
+  <p>
+    There’s something about you that makes everything feel better…<br><br>
     Your smile, your kindness, your way of caring…<br><br>
     You don’t even realize how special you are…<br><br>
-    But to me, you mean everything.</p>
-  <button onclick="nextSlide()">Next ❤️</button>
+    But to me, you mean everything.
+  </p>
+  <div class="btns">
+    <button onclick="prevSlide()">⬅</button>
+    <button onclick="nextSlide()">Next ❤️</button>
+  </div>
 </section>
 
 <section class="red">
   <h1>Your Gifts 💝</h1>
-  <p>🍫 The chocolates — you made my day sweeter than ever.<br><br>
+  <p>
+    🍫 The chocolates — you made my day sweeter than ever.<br><br>
     🌹 The rose pen stand — something beautiful that stays… just like us.<br><br>
-    💌 Your letter — the most meaningful thing, because it came from your heart.</p>
-  <button onclick="nextSlide()">Next ❤️</button>
+    💌 Your letter — the most meaningful thing, because it came from your heart.
+  </p>
+  <div class="btns">
+    <button onclick="prevSlide()">⬅</button>
+    <button onclick="nextSlide()">Next ❤️</button>
+  </div>
 </section>
 
 <section>
   <h1>What I Feel ❤️</h1>
-  <p>I may not always express it perfectly…<br><br>
+  <p>
+    I may not always express it perfectly…<br><br>
     But what I feel for you is real, deep, and growing every day.<br><br>
-    You’ve become a part of my happiness… my thoughts… my life.</p>
-  <button onclick="nextSlide()">Next ❤️</button>
+    You’ve become a part of my happiness… my thoughts… my life.
+  </p>
+  <div class="btns">
+    <button onclick="prevSlide()">⬅</button>
+    <button onclick="nextSlide()">Next ❤️</button>
+  </div>
 </section>
 
 <section class="dark">
   <h1>Little Things 💕</h1>
-  <p>The way you talk…<br>
+  <p>
+    The way you talk…<br>
     The way you care…<br>
     The way you make everything feel lighter…<br><br>
-    These small things mean the most to me.</p>
-  <button onclick="nextSlide()">Next ❤️</button>
+    These small things mean the most to me.
+  </p>
+  <div class="btns">
+    <button onclick="prevSlide()">⬅</button>
+    <button onclick="nextSlide()">Next ❤️</button>
+  </div>
 </section>
 
 <section>
   <h1>For the Future </h1>
-  <p>I don’t know what the future holds…<br><br>
+  <p>
+    I don’t know what the future holds…<br><br>
     But I do know one thing — I want you in it.<br><br>
-    More smiles, more memories, more moments together.</p>
-  <button onclick="nextSlide()">Next ❤️</button>
+    More smiles, more memories, more moments together.
+  </p>
+  <div class="btns">
+    <button onclick="prevSlide()">⬅</button>
+    <button onclick="nextSlide()">Next ❤️</button>
+  </div>
 </section>
 
 <section class="black">
   <h1>Thanku ❤️</h1>
-  <p> This website is just a small way to say thank you…<br><br>
-    But what I feel for you is much bigger than words.<br><br>
+  <p>
+    This website is just a small way to say thank you…<br><br>
+    But what I feel for you is much bigger than words.
   </p>
-  <button onclick="nextSlide()">Next ❤️</button>
+  <div class="btns">
+    <button onclick="prevSlide()">⬅</button>
+    <button onclick="nextSlide()">Next ❤️</button>
+  </div>
 </section>
 
 <section class="red">
   <h1>One More Thing ❤️</h1>
   <button onclick="showLove()">Click Me</button>
-  <p id="secret" style="display:none;">You are the best thing that ever happened to me ❤️</p>
-  
+  <p id="secret" style="display:none;">
+    You are the best thing that ever happened to me ❤️
+  </p>
 </section>
-
-
 
 <script>
 let current = 0;
 const slides = document.querySelectorAll("section");
 
+const progress = document.getElementById("progress");
+const music = document.getElementById("bgMusic");
+
+/* Show slide */
+function showSlide(index) {
+  slides.forEach(s => s.classList.remove("active"));
+  slides[index].classList.add("active");
+  progress.style.width = ((index + 1) / slides.length) * 100 + "%";
+}
+
+/* Next */
 function nextSlide() {
-  slides[current].classList.remove("active");
-  current++;
-  if (current < slides.length) {
-    slides[current].classList.add("active");
+  if (current === 0) {
+    music.play(); // starts music on first click
+  }
+
+  if (current < slides.length - 1) {
+    current++;
+    showSlide(current);
   }
 }
+
+/* Previous */
+function prevSlide() {
+  if (current > 0) {
+    current--;
+    showSlide(current);
+  }
+}
+
+/* Init */
+showSlide(current);
 
 /* Typing */
 const text = "For My Cutie ❤️";
@@ -190,6 +273,21 @@ setInterval(createHeart, 300);
 function showLove() {
   document.getElementById("secret").style.display = "block";
 }
+
+/* Keyboard */
+document.addEventListener("keydown", e => {
+  if (e.key === "ArrowRight") nextSlide();
+  if (e.key === "ArrowLeft") prevSlide();
+});
+
+/* Swipe */
+let startX = 0;
+document.addEventListener("touchstart", e => startX = e.touches[0].clientX);
+document.addEventListener("touchend", e => {
+  let endX = e.changedTouches[0].clientX;
+  if (startX - endX > 50) nextSlide();
+  if (endX - startX > 50) prevSlide();
+});
 </script>
 
 </body>
